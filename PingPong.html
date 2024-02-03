@@ -1,0 +1,47 @@
+<html>
+whatevah
+    <canvas id = "gameField" width = "800" height = "600"></canvas>
+
+    <script>
+        var canvas;
+        var canvasProperties;
+        var ball = 50;
+        var speed = 10;
+
+        window.onload = function () {
+            canvas = document.getElementById('gameField');
+            canvasProperties = canvas.getContext('2d');
+            setInterval(function(){
+                MoveBall();
+                drawObjects();
+            }, 1000/framesPerSecond);
+
+            var framesPerSecond = 60;
+        }
+
+        function drawObjects(){
+            pseudoDrawObjects(0,0,canvas.width,canvas.height, 'black');
+            pseudoDrawObjects(0,210, 20, 100, 'white');
+            pseudoDrawObjects(ball, 100, 10,10, 'red');
+        }
+
+        function MoveBall(){
+        ball = ball + speed;
+            if(ball > canvas.width){
+        speed = -speed;
+        }
+        if (ball < 0){
+        speed = -speed;
+            }
+        }
+
+        function pseudoDrawObjects (X, Y, width, height, color){
+            canvasProperties.fillStyle= color;
+            canvasProperties.fillRect(X, Y, width, height);
+        }
+    
+
+
+
+    </script>
+</html>
